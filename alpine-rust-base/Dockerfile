@@ -1,5 +1,4 @@
 FROM alpine:3.7
-WORKDIR /tmp/darc
 LABEL org.label-schema.name="docker-alpine-rust" \
       org.label-schema.description="Docker Alpine Rust Cargo" \
       org.label-schema.url="https://hub.docker.com/r/sitkevij/alpine-rust/" \
