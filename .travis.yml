@@ -1,0 +1,35 @@
+sudo: required
+language: bash
+services: docker
+
+# directories:
+#  alpine-rust-base-glibc 
+#  alpine-rust-rustup
+# tags:
+#  sitkevij/alpine-rust:rustup               ef64ed14c556        5 hours ago         676MB
+#  sitkevij/alpine-rust:base-glibc           ad3813ff6959        6 hours ago         282MB
+
+env:
+ - IMAGE=alpine-rust VERSION=base-glibc OS=alpine
+ - IMAGE=alpine-rust VERSION=rustup OS=alpine
+
+before_script:
+  - env | sort
+  - IMAGE_VERSION="${IMAGE}:${VERSION}"
+  - echo "$IMAGE_VERSION"
+  - LOCAL_DIR="${IMAGE}-${VERSION}"
+  - echo "$LOCAL_DIR"
+
+script:
+- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+- docker build --build-arg VCS_REF=`git rev-parse --short HEAD` --build-arg BUILD_DATE=`date -u +”%Y-%m-%dT%H:%M:%SZ”` -t $DOCKER_USERNAME/$IMAGE:latest -t $DOCKER_USERNAME/$IMAGE_VERSION $LOCAL_DIR
+- docker images
+- echo "$DOCKER_USERNAME/$IMAGE_VERSION"
+- docker run $DOCKER_USERNAME/$IMAGE_VERSION -version >"$LOCAL_DIR/README.md"  
+- docker run $DOCKER_USERNAME/$IMAGE_VERSION -buildconf >>"$LOCAL_DIR/README.md"
+- docker tag $DOCKER_USERNAME/$IMAGE:latest $DOCKER_USERNAME/$IMAGE_VERSION
+# - if [[ "$VERSION" == "3.4" ]]; docker push $DOCKER_USERNAME/$IMAGE:latest ; fi
+- if [ $VERSION == "rustup" ]; then
+    docker push $DOCKER_USERNAME/$IMAGE:latest;
+    fi
+- docker push $DOCKER_USERNAME/$IMAGE_VERSION

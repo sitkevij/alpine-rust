@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM frolvlad/alpine-glibc
 LABEL org.label-schema.name="docker-alpine-rust" \
       org.label-schema.description="Docker Alpine Rust Cargo" \
       org.label-schema.url="https://hub.docker.com/r/sitkevij/alpine-rust/" \
@@ -12,4 +12,3 @@ apk update && \
 apk upgrade && \
 apk add rust cargo
 # sitkevij/alpine-rust 263 MB in 35 packages, compressed: 111 MB
-# Linux 4e2d0e23b7ff 4.9.60-linuxkit-aufs #1 SMP Mon Nov 6 16:00:12 UTC 2017 x86_64 Linux
