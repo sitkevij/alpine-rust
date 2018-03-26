@@ -2,12 +2,16 @@
 
 Small Alpine images for rust.
 
+[![build](https://travis-ci.org/sitkevij/alpine-rust.svg?branch=master)](https://travis-ci.org/sitkevij/alpine-rust)
+
 # install notes
 
 - For Alpine Linux (glibc) we are interested in default host `x86_64-unknown-linux-gnu`
 - See [Other installation methods](https://github.com/rust-lang-nursery/rustup.rs#other-installation-methods)
 
-## apk del cargo
+## rustup-init.sh build method
+
+### apk del cargo
 ```
 (1/2) Purging cargo (0.22.0-r3)
 (2/2) Purging libgit2 (0.25.1-r4)
@@ -16,7 +20,7 @@ Executing glibc-bin-2.27-r0.trigger
 OK: 333 MiB in 46 packages
 ```
 
-## apk del rust
+### apk del rust
 ```
 (1/7) Purging rust (1.22.1-r0)
 (2/7) Purging rust-stdlib (1.22.1-r0)
@@ -30,7 +34,7 @@ Executing glibc-bin-2.27-r0.trigger
 OK: 166 MiB in 39 packages
 ```
 
-## ~/rustup.rs/rustup-init.sh
+### ~/rustup.rs/rustup-init.sh
 
 ```
 Welcome to Rust!
@@ -62,7 +66,7 @@ Current installation options:
 3) Cancel installation
 ```
 
-## ~/rustup.rs/rustup-init.sh -y
+### ~/rustup.rs/rustup-init.sh -y
 ```
 info: downloading installer
 info: syncing channel updates for 'stable-x86_64-unknown-linux-gnu'

@@ -11,8 +11,7 @@ ENV RUSTUP_TOOLCHAIN=stable-x86_64-unknown-linux-musl
 RUN cd && \
 apk update && \
 apk upgrade && \
-apk add curl ca-certificates gcc make zlib-dev openssl-dev perl git
-# RUN cd && git clone --depth 1 https://github.com/rust-lang-nursery/rustup.rs.git && cd rustup.rs && cargo build --release
+apk add curl ca-certificates gcc make zlib-dev openssl-dev
 RUN echo "export PATH=$PATH:~/.cargo/bin"  >> ~/.profile && source ~/.profile && \
 apk del cargo && \
 apk del rust && \

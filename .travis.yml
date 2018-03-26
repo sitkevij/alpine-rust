@@ -30,7 +30,7 @@ script:
 # - docker run $DOCKER_USERNAME/$IMAGE_VERSION -buildconf >>"$LOCAL_DIR/README.md"
 - docker tag $DOCKER_USERNAME/$IMAGE:latest $DOCKER_USERNAME/$IMAGE_VERSION
 # - if [[ "$VERSION" == "3.4" ]]; docker push $DOCKER_USERNAME/$IMAGE:latest ; fi
-- if [ $VERSION == "rustup" ]; then
+- if [ $VERSION == "rustup.rs" ]; then
     docker push $DOCKER_USERNAME/$IMAGE:latest;
     fi
 - docker push $DOCKER_USERNAME/$IMAGE_VERSION
