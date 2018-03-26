@@ -12,6 +12,7 @@ services: docker
 env:
  - IMAGE=alpine-rust VERSION=base-glibc OS=alpine
  - IMAGE=alpine-rust VERSION=rustup OS=alpine
+ - IMAGE=alpine-rust VERSION=rustup.rs OS=alpine
 
 before_script:
   - env | sort
