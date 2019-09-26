@@ -10,9 +10,8 @@ services: docker
 #  sitkevij/alpine-rust:base-glibc           ad3813ff6959        6 hours ago         282MB
 
 env:
- - IMAGE=alpine-rust VERSION=base-glibc OS=alpine
- - IMAGE=alpine-rust VERSION=rustup OS=alpine
- - IMAGE=alpine-rust VERSION=rustup.rs OS=alpine
+ - IMAGE=alpine VERSION=rust-base OS=alpine
+ - IMAGE=alpine VERSION=rust OS=alpine
 
 before_script:
   - env | sort
@@ -30,7 +29,7 @@ script:
 # - docker run $DOCKER_USERNAME/$IMAGE_VERSION -buildconf >>"$LOCAL_DIR/README.md"
 - docker tag $DOCKER_USERNAME/$IMAGE:latest $DOCKER_USERNAME/$IMAGE_VERSION
 # - if [[ "$VERSION" == "3.4" ]]; docker push $DOCKER_USERNAME/$IMAGE:latest ; fi
-- if [ $VERSION == "rustup.rs" ]; then
+- if [ $VERSION == "alpine-rust" ]; then
     docker push $DOCKER_USERNAME/$IMAGE:latest;
     fi
 - docker push $DOCKER_USERNAME/$IMAGE_VERSION
